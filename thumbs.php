@@ -3,7 +3,6 @@
 
     // TODO: Delte images above a certain number
     // TODO: Exception on current_1.jpg increaseFileNameEnding
-    // TODO: Delete current.jpg after copying to small and medium folders
 
     // create folder structure
     if (!file_exists('small')) {
