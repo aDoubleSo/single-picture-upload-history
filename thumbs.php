@@ -19,6 +19,9 @@
         increaseFileNameEnding('medium');
         resizeImage('current.jpg','current_1.jpg', 0.2, 'small');
         resizeImage('current.jpg','current_1.jpg', 0.75, 'medium');
+        unlink('current.jpg');
+    } else {
+        debug_to_console("No image found");
     }
 
     function increaseFileNameEnding($folder){
