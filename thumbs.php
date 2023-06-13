@@ -1,7 +1,7 @@
 <?php
     debug_to_console("Starting PHP script...");
 
-    // TODO: delte images above a certain number
+    // TODO: Delte images above a certain number
     // TODO: Exception on current_1.jpg increaseFileNameEnding
     // TODO: Delete current.jpg after copying to small and medium folders
 
@@ -28,19 +28,16 @@
         $images = array_values($images);
         if(count($images) > 0){
             debug_to_console("Images found: " . count($images));
-        // Iterate trough all images in the folder and log to console
-        for($i = count($images); $i >= 0; $i--){
-            debug_to_console("Image: " . $images[$i]);
-            $ending = getFileNameEnding($images[$i]);
-            debug_to_console("File name ending: " . $ending);
-            // rename $image to current_ plus ending + 1
-            rename($images[$i], $folder . '/current_' . ($ending +1) . '.jpg');
-            // if($i >= $max_pic){
-            //     debug_to_console("Deleting image: " . $images[$i]);
-            //     unlink($images[$i]);
-            // }
+            // Iterate trough all images in the folder and log to console
+            for($i = count($images); $i >= 0; $i--){
+                debug_to_console("Image: " . $images[$i]);
+                $ending = getFileNameEnding($images[$i]);
+                debug_to_console("File name ending: " . $ending);
+                // rename $image to current_ plus ending + 1
+                rename($images[$i], $folder . '/current_' . ($ending +1) . '.jpg');
+
+            }
         }
-    }
     }
 
     // get the file name after the _
@@ -50,6 +47,7 @@
         return $filename[0];
     }
 
+    // resize image and save to folder
     function resizeImage($SourceFileName, $targetFileName, $scale, $folder){
         debug_to_console("Resizing image...");
         list($width, $height) = getimagesize($SourceFileName);
