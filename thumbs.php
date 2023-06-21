@@ -1,7 +1,6 @@
 <?php
     debug_to_console("Starting PHP script...");
 
-    // TODO: Delte images above a certain number
     // TODO: Exception on current_1.jpg increaseFileNameEnding
 
     // create folder structure
@@ -12,6 +11,9 @@
         mkdir('medium', 0777, true);
     }
 
+    deleteOldPictures(24, 'small');
+    deleteOldPictures(24, 'medium');
+
     if(file_exists('current.jpg')){
         debug_to_console("Image exists and will now be copied to small and medium folders");
         increaseFileNameEnding('small');
@@ -19,11 +21,11 @@
         resizeImage('current.jpg','current_1.jpg', 0.2, 'small');
         resizeImage('current.jpg','current_1.jpg', 0.75, 'medium');
         unlink('current.jpg');
-        deleteOldPictures(24);
     } else {
         debug_to_console("No image found");
     }
 
+    // increase file name ending for existing images
     function increaseFileNameEnding($folder){
         debug_to_console("Increasing file name ending...");
         $images = glob($folder . '/*.jpg', GLOB_BRACE);
@@ -44,8 +46,8 @@
     }
 
     // delete old images
-    function deleteOldPictures(int $valueEnding){
-        debug_to_console("Delete picture with an ending higher:" . valueEnding);
+    function deleteOldPictures(int $valueEnding, string $folder){
+        debug_to_console("Delete picture with an ending higher:" . $valueEnding);
         $images = glob($folder . '/*.jpg', GLOB_BRACE);
         natsort($images);
         $images = array_values($images);
@@ -53,6 +55,10 @@
             debug_to_console("Images found: " . count($images));
             // Iterate trough all images in the folder and log to console
             for($i = count($images); $i >= $valueEnding; $i--){
+                debug_to_console("Image: " . $images[$i]);
+                if(file_exists($images[$i])){
+                    unlink($images[$i]);
+                }
             }
         }
     }
