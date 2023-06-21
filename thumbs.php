@@ -19,6 +19,7 @@
         resizeImage('current.jpg','current_1.jpg', 0.2, 'small');
         resizeImage('current.jpg','current_1.jpg', 0.75, 'medium');
         unlink('current.jpg');
+        deleteOldPictures(24);
     } else {
         debug_to_console("No image found");
     }
@@ -38,6 +39,20 @@
                 // rename $image to current_ plus ending + 1
                 rename($images[$i], $folder . '/current_' . ($ending +1) . '.jpg');
 
+            }
+        }
+    }
+
+    // delete old images
+    function deleteOldPictures(int $valueEnding){
+        debug_to_console("Delete picture with an ending higher:" . valueEnding);
+        $images = glob($folder . '/*.jpg', GLOB_BRACE);
+        natsort($images);
+        $images = array_values($images);
+        if(count($images) > 0){
+            debug_to_console("Images found: " . count($images));
+            // Iterate trough all images in the folder and log to console
+            for($i = count($images); $i >= $valueEnding; $i--){
             }
         }
     }
