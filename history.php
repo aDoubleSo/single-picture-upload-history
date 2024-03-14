@@ -32,17 +32,22 @@
   float: none;
   width: 100%;
 }
+
+.image {
+  width: 97.0%;
+  border: 2px solid #fff;
+  float: left;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
 </style>
 
 <div class="container">
+            <img class="image" src="medium/current_1.jpg" alt="" title="" />            
  <div class="gallery">
-
-            <!-- Image -->
-            <a href="medium/current_1.jpg">
-            <img src="small/current_1.jpg" alt="" title="">
-            </a>
-            <!-- --- -->
-            
             <!-- Image -->
             <a href="medium/current_2.jpg">
             <img src="small/current_2.jpg" alt="" title="">
@@ -60,13 +65,13 @@
             <img src="small/current_4.jpg" alt="" title="">
             </a>
             <!-- --- -->
-                        <div class="clear"></div>
-                                    <!-- Image -->
+                        
+            <!-- Image -->
             <a href="medium/current_5.jpg">
             <img src="small/current_5.jpg" alt="" title="">
             </a>
             <!-- --- -->
-            
+            <div class="clear"></div>
             <!-- Image -->
             <a href="medium/current_6.jpg">
             <img src="small/current_6.jpg" alt="" title="">
@@ -84,13 +89,13 @@
             <img src="small/current_8.jpg" alt="" title="">
             </a>
             <!-- --- -->
-            <div class="clear"></div>
+           
             <!-- Image -->
             <a href="medium/current_9.jpg">
             <img src="small/current_9.jpg" alt="" title="">
             </a>
             <!-- --- -->
-            
+            <div class="clear"></div>
             <!-- Image -->
             <a href="medium/current_10.jpg">
             <img src="small/current_10.jpg" alt="" title="">
@@ -108,12 +113,12 @@
             <img src="small/current_12.jpg" alt="" title="">
             </a>
             <!-- --- -->
-            <div class="clear"></div>
             <!-- Image -->
             <a href="medium/current_13.jpg">
             <img src="small/current_13.jpg" alt="" title="">
             </a>
             <!-- --- -->
+            <div class="clear"></div>
             
             <!-- Image -->
             <a href="medium/current_14.jpg">
@@ -132,11 +137,11 @@
             <img src="small/current_16.jpg" alt="" title="">
             </a>
             <!-- --- -->
-             <div class="clear"></div>
             <a href="medium/current_17.jpg">
             <img src="small/current_17.jpg" alt="" title="">
             </a>
             <!-- --- -->
+            <div class="clear"></div>
             
             <!-- Image -->
             <a href="medium/current_18.jpg">
@@ -154,28 +159,10 @@
             <a href="medium/current_20.jpg">
             <img src="small/current_20.jpg" alt="" title="">
             </a>
-            <!-- --- -->
-            <div class="clear"></div>
+
+            <!-- Image -->
             <a href="medium/current_21.jpg">
             <img src="small/current_21.jpg" alt="" title="">
-            </a>;
-            <!-- --- -->
-            
-            <!-- Image -->
-            <a href="medium/current_22.jpg">
-            <img src="small/current_22.jpg" alt="" title="">
-            </a>
-            <!-- --- -->
-            
-            <!-- Image -->
-            <a href="medium/current_23.jpg">
-            <img src="small/current_23.jpg" alt="" title="">
-            </a>
-            <!-- --- -->
-            
-            <!-- Image -->
-            <a href="medium/current_24.jpg">
-            <img src="small/current_24.jpg" alt="" title="">
             </a>
             <!-- --- -->
             <div class="clear"></div>
