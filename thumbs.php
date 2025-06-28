@@ -13,12 +13,24 @@
     deleteOldPictures(24, 'medium');
 
     if(file_exists('current.jpg')){
-        debug_to_console("Image exists and will now be copied to small and medium folders");
-        increaseFileNameEnding('small');
-        increaseFileNameEnding('medium');
-        resizeImage('current.jpg','current_1.jpg', 0.2, 'small');
-        resizeImage('current.jpg','current_1.jpg', 0.75, 'medium');
-        unlink('current.jpg');
+        // Wait until the file is stable (not being written to)
+        $maxWait = 10; // seconds
+        $waited = 0;
+        while (!isFileStable('current.jpg') && $waited < $maxWait) {
+            debug_to_console("Waiting for upload to complete...");
+            sleep(1);
+            $waited++;
+        }
+        if (!isFileStable('current.jpg')) {
+            debug_to_console("File is not stable after waiting. Aborting processing.");
+        } else {
+            debug_to_console("Image exists and will now be copied to small and medium folders");
+            increaseFileNameEnding('small');
+            increaseFileNameEnding('medium');
+            resizeImage('current.jpg','current_1.jpg', 0.2, 'small');
+            resizeImage('current.jpg','current_1.jpg', 0.75, 'medium');
+            unlink('current.jpg');
+        }
     } else {
         debug_to_console("No image found");
     }
@@ -102,6 +114,16 @@
 
         imagedestroy($image_p);
         imagedestroy($image);
+    }
+
+    // Wait for upload to complete (file size stable)
+    function isFileStable($filename, $waitSeconds = 2) {
+        if (!file_exists($filename)) return false;
+        $size1 = filesize($filename);
+        sleep($waitSeconds);
+        clearstatcache(true, $filename);
+        $size2 = filesize($filename);
+        return ($size1 === $size2);
     }
 
     function debug_to_console($data) {
